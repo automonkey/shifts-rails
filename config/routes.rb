@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'event_sets#new'
+
   resources :event_sets
 
   # The priority is based upon order of creation: first created -> highest priority.
