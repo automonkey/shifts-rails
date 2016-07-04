@@ -3,7 +3,7 @@ class EventSet
     @ics_data =
       "BEGIN:VCALENDAR\n"\
       "VERSION:2.0\n"\
-      "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\n"\
+      "PRODID:-//Benyon.io//Shifts v1.0//aEN\n"\
       "BEGIN:VEVENT\n"\
       "DTSTART:#{from}\n"\
       "DTEND:#{to}\n"\
