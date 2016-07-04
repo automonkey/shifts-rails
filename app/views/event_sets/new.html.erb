@@ -1,5 +1,22 @@
 <h1>Enter Events</h1>
 
 <%= form_for :event_set, url: event_sets_path do |f| %>
-  <%= f.submit %>
+  <p>
+  Dates should be of format: <i>YYYYMMDD</i>T<i>HHMMSS</i>Z<br />
+	Example: 19970714T170000Z
+  </p>
+
+  <p>
+    <%= f.label :from_date %><br />
+	<%= f.text_field :from_date, value: '20160702T160000Z' %>
+  </p>
+
+  <p>
+    <%= f.label :to_date %><br />
+	<%= f.text_field :to_date, value: '20160702T170000Z' %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
