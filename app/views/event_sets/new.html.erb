@@ -2,18 +2,13 @@
 
 <%= form_for :event_set, url: event_sets_path do |f| %>
   <p>
-  Dates should be of format: <i>YYYYMMDD</i>T<i>HHMMSS</i>Z<br />
-	Example: 19970714T170000Z
+    Dates should be of format: <i>YYYYMMDD</i>T<i>HHMMSS</i>Z<br />
+    Example: 19970714T170000Z to 19970714T180000Z
   </p>
 
   <p>
-    <%= f.label :from_date %><br />
-	<%= f.text_field :from_date, value: '20160702T160000Z' %>
-  </p>
-
-  <p>
-    <%= f.label :to_date %><br />
-	<%= f.text_field :to_date, value: '20160702T170000Z' %>
+    <%= f.label :event_string %><br />
+	<%= f.text_area :event_string, value: '20160725T160000Z to 20160725T170000Z' %>
   </p>
 
   <p>
