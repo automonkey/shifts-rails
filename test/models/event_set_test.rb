@@ -14,7 +14,12 @@ describe EventSet do
     "END:VCALENDAR"
 
   it "should generate ics data from input from and to time" do
-    test_event_set = EventSet.new('20160725T100000Z to 20160725T110000Z')
+    test_event_set = EventSet.new(
+      [{
+        from: Time.utc(2016, 07, 25, 10, 00, 00),
+        to: Time.utc(2016, 07, 25, 11, 00, 00)
+      }]
+    )
 
     expected =
       ics_preamble +

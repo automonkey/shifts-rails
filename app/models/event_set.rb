@@ -1,8 +1,8 @@
 class EventSet
-  def initialize(event_string)
-    split = event_string.split(' to ')
-    @from = split[0]
-    @to = split[1]
+
+  def initialize(events)
+    @from = iso8601_string(events[0][:from])
+    @to = iso8601_string(events[0][:to])
   end
 
   def ics_data()
@@ -17,4 +17,10 @@ class EventSet
       "END:VEVENT\n"\
       "END:VCALENDAR"
   end
+
+  private
+  def iso8601_string(time)
+    return time.strftime("%Y%m%dT%H%M%SZ")
+  end
+
 end
