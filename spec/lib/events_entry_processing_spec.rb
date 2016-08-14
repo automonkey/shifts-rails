@@ -1,8 +1,7 @@
-require 'test_helper'
+require 'rails_helper'
 require 'event_entry_processing/processor'
 
 describe EventEntryProcessor do
-  include RSpec::Matchers
 
   p = EventEntryProcessor.new
 

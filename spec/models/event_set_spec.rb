@@ -1,7 +1,6 @@
-require 'test_helper'
+require 'rails_helper'
 
 describe EventSet do
-  include RSpec::Matchers
 
   ics_preamble =
     "BEGIN:VCALENDAR\n"\
