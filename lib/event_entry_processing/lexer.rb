@@ -8,4 +8,6 @@ class DateEntriesLexer < Rly::Lex
 
   token :ISO_8601_DATE, /\d{8}T\d{6}Z/
 
+  token :SEPARATOR, /,|\r\n/
+
 end

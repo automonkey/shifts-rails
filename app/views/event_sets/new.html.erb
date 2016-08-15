@@ -2,8 +2,12 @@
 
 <%= form_for :event_set, url: event_sets_path do |f| %>
   <p>
-    Dates should be of format: <i>YYYYMMDD</i>T<i>HHMMSS</i>Z<br />
+    Events should be of format '<i>FROM_DATE_TIME</i> to <i>TO_DATE_TIME</i>' where <i>FROM_DATE_TIME</i> and <i>TO_DATE_TIME</i> are dates of the form: '<i>YYYYMMDD</i>T<i>HHMMSS</i>Z'.<br />
     Example: 19970714T170000Z to 19970714T180000Z
+  </p>
+
+  <p>
+    Multiple events may be separated by new line, comma or spaces.
   </p>
 
   <p>

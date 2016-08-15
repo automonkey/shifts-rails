@@ -3,7 +3,9 @@ require 'event_entry_processing/processor'
 
 describe EventEntryProcessor do
 
-  p = EventEntryProcessor.new
+  before(:each) do
+    @p = EventEntryProcessor.new
+  end
 
   it 'should process events with ISO 8601 time band' do
     input = '20160725T160000Z to 20160725T160000Z'
@@ -13,13 +15,15 @@ describe EventEntryProcessor do
       to: Time.utc(2016, 07, 25, 16, 00, 00)
     }
 
-    expect(p.process_input(input)).to include expected
+    expect(@p.process_input(input)).to include expected
   end
 
-  it 'should process multiuple events in input' do
-    input = '20160725T160000Z to 20160725T160000Z 20160726T160000Z to 20160726T160000Z'
+  context 'should process multiple event input' do
 
-    expected = [
+    e1 = '20160725T160000Z to 20160725T160000Z'
+    e2 = '20160726T160000Z to 20160726T160000Z'
+
+    array_with_both_events = [
       {
         from: Time.utc(2016, 07, 25, 16, 00, 00),
         to: Time.utc(2016, 07, 25, 16, 00, 00)
@@ -30,7 +34,19 @@ describe EventEntryProcessor do
       }
     ]
 
-    expect(p.process_input(input)).to eq(expected)
+    context 'with space between events' do
+      it { expect(@p.process_input(e1 + ' ' + e2)).to eq(array_with_both_events) }
+    end
+
+    context 'with comma between events' do
+      it { expect(@p.process_input(e1 + ',' + e2)).to eq(array_with_both_events) }
+      it { expect(@p.process_input(e1 + ', ' + e2)).to eq(array_with_both_events) }
+    end
+
+    context 'with new line between events' do
+      it { expect(@p.process_input(e1 + "\r\n" + e2)).to eq(array_with_both_events) }
+    end
+
   end
 
 end

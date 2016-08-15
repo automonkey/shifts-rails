@@ -2,7 +2,9 @@ require "rly/helpers"
 
 class EventTimesParser < Rly::Yacc
 
-  rule 'events : event | event events', &collect_to_a
+  rule 'events : event
+               | event events
+               | event SEPARATOR events', &collect_to_a
 
   rule 'event : date TO date' do |ev, d1, _, d2|
     ev.value = {
