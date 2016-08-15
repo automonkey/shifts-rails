@@ -6,7 +6,7 @@ class EventTimesParser < Rly::Yacc
                | event events
                | event SEPARATOR events', &collect_to_a
 
-  rule 'event : date TO date' do |ev, d1, _, d2|
+  rule 'event : date RANGE_OPERATOR date' do |ev, d1, _, d2|
     ev.value = {
       from: d1.value,
       to: d2.value
