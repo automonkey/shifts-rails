@@ -18,6 +18,17 @@ describe EventEntryProcessor do
     expect(@p.process_input(input)).to include expected
   end
 
+  it 'should accept range with upper "to"' do
+
+    expected = {
+      from: Time.utc(2016, 07, 25, 16, 00, 00),
+      to: Time.utc(2016, 07, 25, 16, 00, 00)
+    }
+
+    input = '20160725T160000Z TO 20160725T160000Z'
+    expect(@p.process_input(input)).to include expected
+  end
+
   context 'should process multiple event input' do
 
     e1 = '20160725T160000Z to 20160725T160000Z'
